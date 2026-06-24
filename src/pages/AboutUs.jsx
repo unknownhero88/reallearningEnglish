@@ -1,7 +1,7 @@
 import React from "react";
 
 // Import your custom profile picture asset cleanly from the assets folder
-import founderPic from "../assets/profilepic.png";
+import founderPic from "../assets/image_dc2268.jpg";
 
 export default function AboutUs() {
   const accountabilityPoints = [

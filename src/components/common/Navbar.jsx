@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 // Import your brand new logo asset cleanly from the assets folder
-import logoImage from "../../assets/logoimg.png"; // Ensure this matches where you saved it, e.g., ../assets/logo.png
+import logoImage from "../../assets/image_dd6881.png"; // Ensure this matches where you saved it, e.g., ../assets/logo.png
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);

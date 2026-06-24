@@ -1,9 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-// Import your custom student/academy spotlight asset cleanly from the assets folder
-import logoImage from "../../assets/profilepic.png";
-
 export default function Footer() {
   return (
     <footer className="bg-slate-950 text-slate-400 border-t border-slate-900">
