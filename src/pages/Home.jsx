@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import YouTubeEmbed from "../components/ui/YouTubeEmbed";
 
 // Import your custom student profile asset cleanly
-import studentProfilePic from "../assets/image_dc2268.jpg";
+import studentProfilePic from "../assets/profilePic.png";
 
 export default function Home() {
   const achievements = [
