@@ -135,12 +135,49 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* BOTTOM MATRIX: INTELLECTUAL PROPERTY & LEGAL OVERLAYS */}
-        <div className="mt-10 pt-8 border-t border-slate-900/60 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p>
-            &copy; {new Date().getFullYear()} Real Learning English Classes. All
-            rights reserved.
-          </p>
+        {/* BOTTOM SECTION: LEGAL METADATA & DEVELOPER PROTOTYPE CREDIT */}
+        <div className="mt-10 pt-8 border-t border-slate-900/60 text-xs text-slate-500 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="space-y-1 text-center md:text-left">
+            <p>
+              &copy; {new Date().getFullYear()} Real Learning English Classes.
+              All rights reserved.
+            </p>
+            <p className="text-[11px] text-amber-500/80 font-medium">
+              ⚠️ Interactive Prototype Dashboard — Generated exclusively for
+              client presentation review.
+            </p>
+          </div>
+
+          {/* DYNAMIC DEVELOPER SIGNATURE CARD - WITH LINKEDIN & PHONE */}
+          <div className="bg-slate-900/40 border border-slate-800/80 rounded-xl p-3 text-center md:text-left space-y-1.5 shadow-inner max-w-xs w-full md:w-auto">
+            <span className="text-[9px] text-slate-500 font-bold uppercase tracking-widest block">
+              Prototype Engineered By
+            </span>
+
+            <div className="space-y-1">
+              <a
+                href="https://linkedin.com/in/rishisahu8822"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-200 font-bold text-sm tracking-tight flex items-center justify-center md:justify-start gap-1.5 hover:text-emerald-400 transition-colors group"
+              >
+                <span>Rishi Sahu</span>
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
+                  alt="LinkedIn Icon"
+                  className="w-3.5 h-3.5 object-contain opacity-80 group-hover:opacity-100 transition-opacity"
+                />
+              </a>
+
+              <a
+                href="tel:+917880103732"
+                className="text-[11px] text-slate-400 hover:text-slate-200 transition-colors block tracking-wide"
+              >
+                📞 +91 78801 03732
+              </a>
+            </div>
+          </div>
+
           <div className="flex gap-4 text-[11px] font-medium">
             <Link
               to="/terms-conditions-for-the-english-learning-whatsapp-group/"
