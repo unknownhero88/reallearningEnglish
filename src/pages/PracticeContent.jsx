@@ -1,184 +1,182 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { practiceStories } from "../data/stories";
 
 export default function PracticeContent() {
-  const stories = [
-    {
-      title: "Nikki the Squirrel's Nut Plan",
-      path: "/nikki-the-squirrels-nut-plan/",
-    },
-    {
-      title: "Tara the Tiny Elephant's Big Idea",
-      path: "/english-story-tara-the-tiny-elephants-big-idea/",
-    },
-    {
-      title: "Foxy and the Feather of Belief",
-      path: "/english-story-foxy-and-the-feather-of-belief/",
-    },
-    {
-      title: "Ollo the Owl's Day Out",
-      path: "/english-story-ollo-the-owls-day-out/",
-    },
-    {
-      title: "Meeku and the Forest Cleanup",
-      path: "/english-story-meeku-and-the-forest-cleanup/",
-    },
-    {
-      title: "Tippy the Turtle's Clever Race",
-      path: "/english-story-tippy-the-turtles-clever-race/",
-    },
-  ];
+  const [activeTab, setActiveTab] = useState("stories");
 
-  const scripts = [
-    {
-      title: "Inflection & Tone",
-      desc: "Master volume pitch variance configurations to command absolute room authority.",
-    },
-    {
-      title: "Voice Modulation",
-      desc: "Practice mechanical structural shifts to deliver speech patterns that break social monotony.",
-    },
-    {
-      title: "Text-to-Speech Scripts",
-      desc: "Interactive dual-role conversation simulation outlines engineered for fluid personal feedback loops.",
-    },
-  ];
-
-  const slides = [
-    { label: "Learn Adjectives", path: "/learn-adjectives/" },
-    { label: "Core Uses of Make", path: "/uses-of-make/" },
-    { label: "Phrases with Make", path: "/phrases-with-make/" },
-  ];
+  // Parse centralized collection dynamically on the fly based on type parameters
+  const storiesList = practiceStories.filter((item) => item.type === "story");
+  const conversationsList = practiceStories.filter(
+    (item) => item.type === "conversation",
+  );
+  const idiomsList = practiceStories.filter((item) => item.type === "idiom");
 
   return (
-    <div className="py-12 sm:py-16 space-y-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      {/* 1. HEADER HUB TEXT */}
-      <div className="text-center max-w-3xl mx-auto space-y-4">
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
-          Welcome to Real Learning Practice Zone
+    <div className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
+      {/* 1. VAULT ZONE HERO AREA */}
+      <div className="text-center max-w-3xl mx-auto space-y-3">
+        <span className="text-xs font-bold tracking-widest text-emerald-600 uppercase block">
+          Interactive Training Terminal
+        </span>
+        <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+          Real Learning Practice Vault
         </h1>
-        <p className="text-lg text-slate-600">
-          Access high-impact self-study content configurations curated
-          explicitly to train your linguistic processing and internal voice
-          pacing.
+        <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+          Practice regularly to build natural fluency and confidence. Choose a
+          practice category below to open a distraction-free screen.
         </p>
       </div>
 
-      {/* 2. STORY COLLECTION MATRIX */}
-      <section className="space-y-8">
-        <div className="border-b border-slate-200 pb-4 flex items-center justify-between">
-          <h2 className="text-2xl font-bold text-slate-900">
-            Fluency Practice Stories
-          </h2>
-          <span className="hidden sm:inline-block px-3 py-1 bg-brand-50 text-brand-500 font-bold text-xs uppercase tracking-wider rounded-md">
-            Interactive Learning
-          </span>
-        </div>
+      {/* 2. TAB CONTROL SWITCH CONTROLS */}
+      <div className="flex flex-wrap justify-center gap-2 max-w-xl mx-auto bg-slate-100 p-1.5 rounded-2xl border border-slate-200">
+        {[
+          { id: "stories", label: "📚 Spoken Stories" },
+          { id: "conversations", label: "💬 Real Dialogues" },
+          { id: "idioms", label: "✨ Idioms Deck" },
+        ].map((tab) => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            className={`px-4 py-2.5 text-xs sm:text-sm font-bold rounded-xl transition-all flex items-center justify-center min-h-[44px] flex-1 ${
+              activeTab === tab.id
+                ? "bg-white text-slate-950 shadow-sm font-extrabold"
+                : "text-slate-600 hover:text-slate-950 hover:bg-white/50"
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {stories.map((story, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden flex flex-col justify-between group"
-            >
-              <div className="p-6 space-y-4">
-                <span className="inline-block px-2.5 py-0.5 bg-brand-500 text-white font-semibold text-[10px] tracking-wider uppercase rounded">
-                  ENGLISH STORY
-                </span>
-                <h3 className="text-lg font-bold text-slate-900 group-hover:text-brand-500 transition-colors duration-150">
-                  {story.title}
-                </h3>
-                <p className="text-xs text-slate-500 leading-relaxed">
-                  Engineered reading drills to train standard vocabulary
-                  recognition and immediate speech mechanics.
-                </p>
-              </div>
-              <div className="px-6 pb-6 pt-2">
-                <Link
-                  to={story.path}
-                  className="w-full inline-flex items-center justify-center bg-slate-50 group-hover:bg-brand-50 border border-slate-200 group-hover:border-brand-500 text-slate-700 group-hover:text-brand-500 text-sm font-semibold py-2.5 px-4 rounded-lg transition-all duration-150 min-h-[48px]"
-                >
-                  Start Reading Session &rarr;
-                </Link>
-              </div>
+      {/* 3. GRID LAYOUT RENDER MATRIX */}
+      <div className="pt-4">
+        {/* TAB SLOT 1: STORIES CARDS */}
+        {activeTab === "stories" && (
+          <div className="space-y-6">
+            <div className="border-b pb-3 border-slate-200">
+              <h3 className="text-lg font-bold text-slate-950">
+                Active Reading &amp; Comprehension Stories
+              </h3>
+              <p className="text-xs text-slate-500 mt-0.5">
+                Select a text below to open its dedicated page view layout
+                container.
+              </p>
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 3. DIALOGUE SCRIPTS GRID */}
-      <section className="space-y-8 bg-slate-900 text-white rounded-2xl p-8 sm:p-12 shadow-inner">
-        <div className="max-w-2xl">
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
-            Active Dialogue Roleplay Hub
-          </h2>
-          <p className="text-slate-400 text-sm sm:text-base mt-2">
-            Eliminate monotonous vocal delivery patterns using intentional
-            structural pitch shifts.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {scripts.map((script, idx) => (
-            <div
-              key={idx}
-              className="bg-slate-800 border border-slate-700/60 p-6 rounded-xl space-y-3 flex flex-col justify-between"
-            >
-              <div>
-                <h3 className="font-bold text-lg text-brand-500">
-                  {script.title}
-                </h3>
-                <p className="text-sm text-slate-300 leading-relaxed mt-1">
-                  {script.desc}
-                </p>
-              </div>
-              <div className="pt-4">
-                <Link
-                  to="/english-conversations/"
-                  className="text-xs font-bold uppercase tracking-wider text-white hover:text-brand-500 transition-colors inline-flex items-center gap-1 min-h-[48px]"
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {storiesList.map((story) => (
+                <div
+                  key={story.id}
+                  className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:shadow-md transition-shadow min-h-[220px]"
                 >
-                  Launch Script Engine <span>&rarr;</span>
-                </Link>
-              </div>
+                  <div className="space-y-2">
+                    <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md uppercase tracking-wider inline-block">
+                      {story.genre}
+                    </span>
+                    <h4 className="text-lg font-bold text-slate-950 tracking-tight">
+                      {story.title}
+                    </h4>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-2">
+                      {story.summary}
+                    </p>
+                  </div>
+                  <div className="pt-4">
+                    <Link
+                      to={`/practice-content/${story.id}`}
+                      className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider py-3 px-4 rounded-xl text-center block transition-colors min-h-[44px] flex items-center justify-center"
+                    >
+                      Open Story Drill &rarr;
+                    </Link>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 4. IDIOMS & QUICK-MODULE SLIDERS */}
-      <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-brand-50/50 p-8 rounded-2xl border border-brand-100">
-        <div className="lg:col-span-4 space-y-4">
-          <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">
-            The Magic of Idioms
-          </h2>
-          <p className="text-sm text-slate-600 leading-relaxed">
-            Transition smoothly from textbook syntax definitions into native
-            conversational shorthand phrases instantly.
-          </p>
-          <div className="pt-2">
-            <Link
-              to="/idioms-a-key-to-mastering-english/"
-              className="inline-flex items-center text-sm font-bold text-brand-500 hover:text-brand-600 min-h-[48px]"
-            >
-              Explore Full Idiom Index &rarr;
-            </Link>
           </div>
-        </div>
+        )}
 
-        <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {slides.map((slide, idx) => (
-            <Link
-              key={idx}
-              to={slide.path}
-              className="bg-white p-5 rounded-xl border border-slate-200 text-center shadow-sm hover:border-brand-500 hover:shadow-md transition-all duration-150 flex items-center justify-center min-h-[72px]"
-            >
-              <span className="text-sm font-bold text-slate-800 hover:text-brand-500">
-                {slide.label}
-              </span>
-            </Link>
-          ))}
-        </div>
-      </section>
+        {/* TAB SLOT 2: CONVERSATION CARDS */}
+        {activeTab === "conversations" && (
+          <div className="space-y-6">
+            <div className="border-b pb-3 border-slate-200">
+              <h3 className="text-lg font-bold text-slate-950">
+                Real Dialogue Scenario Sheets
+              </h3>
+              <p className="text-xs text-slate-500 mt-0.5">
+                Click to expand any exchange scenario into its own full-screen
+                page for pronunciation drills.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {conversationsList.map((conv) => (
+                <div
+                  key={conv.id}
+                  className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:shadow-md transition-shadow min-h-[220px]"
+                >
+                  <div className="space-y-2">
+                    <span className="text-[10px] font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-md uppercase tracking-wider inline-block">
+                      {conv.genre}
+                    </span>
+                    <h4 className="text-lg font-bold text-slate-950 tracking-tight">
+                      {conv.title}
+                    </h4>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-2">
+                      {conv.summary}
+                    </p>
+                  </div>
+                  <div className="pt-4">
+                    <Link
+                      to={`/practice-content/${conv.id}`}
+                      className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider py-3 px-4 rounded-xl text-center block transition-colors min-h-[44px] flex items-center justify-center"
+                    >
+                      Open Full Dialogue Screen &rarr;
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* TAB SLOT 3: IDIOMS CARDS */}
+        {activeTab === "idioms" && (
+          <div className="space-y-6">
+            <div className="border-b pb-3 border-slate-200">
+              <h3 className="text-lg font-bold text-slate-950">
+                The Native Expressions Dictionary Deck
+              </h3>
+              <p className="text-xs text-slate-500 mt-0.5">
+                Click any idiom card to see its full definition breakdown and
+                real-world usage examples.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {idiomsList.map((idiom) => (
+                <div
+                  key={idiom.id}
+                  className="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col justify-between hover:shadow-md transition-shadow min-h-[220px]"
+                >
+                  <div className="space-y-2">
+                    <span className="text-[9px] font-bold text-purple-700 bg-purple-50 px-2 py-0.5 rounded uppercase tracking-wide inline-block">
+                      {idiom.genre}
+                    </span>
+                    <h4 className="text-lg font-black text-slate-900 leading-tight">
+                      “{idiom.title}”
+                    </h4>
+                  </div>
+                  <div className="pt-4">
+                    <Link
+                      to={`/practice-content/${idiom.id}`}
+                      className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider py-3 px-4 rounded-xl text-center block transition-colors min-h-[44px] flex items-center justify-center"
+                    >
+                      View Meaning &amp; Examples &rarr;
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

@@ -14,6 +14,7 @@ import Contact from "./pages/Contact";
 import Courses from "./pages/Courses.jsx";
 import TermsConditions from "./pages/TermsConditions.jsx";
 import RefundPolicy from "./pages/RefundPolicy.jsx";
+import StoryViewer from "./pages/StoryViewer";
 
 export default function App() {
   return (
@@ -24,6 +25,8 @@ export default function App() {
       {/* Main Content Body */}
       <main className="flex-grow">
         <Routes>
+          <Route path="/practice-content" element={<PracticeContent />} />
+          <Route path="/practice-content/:storyId" element={<StoryViewer />} />
           <Route path="/refund_returns" element={<RefundPolicy />} />
           <Route
             path="/terms-conditions-for-the-english-learning-whatsapp-group"
